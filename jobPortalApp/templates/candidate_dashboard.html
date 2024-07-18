@@ -1,0 +1,61 @@
+<!-- jobPortalApp/templates/candidate_dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script>
+        function applyJob(jobId) {
+            fetch(`/apply-job/${jobId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ jobId: jobId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message in a dialog box
+                    alert('Applied Successfully!');
+                } else {
+                    // Show error message in a dialog box
+                    alert('Failed to apply for the job. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Candidate Dashboard</h1>
+    </header>
+    <nav>
+        <a href="{% url 'index' %}">Back to Home</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Available Jobs</h2>
+            <div class="job-listing">
+                {% for job in jobs %}
+                    <div class="job">
+                        <h3>{{ job.title }}</h3>
+                        <p>{{ job.description }}</p>
+                        <button onclick="applyJob({{ job.id }})">Apply</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

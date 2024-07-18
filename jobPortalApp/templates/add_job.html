@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        h2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: brown;
+            /* text-decoration: solid; */
+        }
+        /* Center the form */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Increase the size of job title input */
+        #title {
+            width: 300px; /* Adjust the width as needed */
+            height: 30px;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Increase the size of job description textarea */
+        #description {
+            width: 300px; /* Adjust the width as needed */
+            height: 100px; /* Adjust the height as needed */
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Style the submit button */
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Portal</h1>
+    </header>
+    <nav>
+        <a href="{% url 'candidate_dashboard' %}">Candidate Dashboard</a>
+        <a href="{% url 'hr_dashboard' %}">HR Dashboard</a>
+    </nav>
+    <main>
+    <h2>Add Job</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Job Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Job Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

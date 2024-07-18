@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>HR Dashboard</h1>
+    </header>
+    <nav>
+        <a href="{% url 'index' %}">Back to Home</a>
+    </nav>
+    <main>
+        <!-- Section to create job alert -->
+        <section>
+            <h2>Create Job Alert</h2>
+            <a href="{% url 'add_job' %}">Add Job</a>
+            <div class="job-listing">
+                <!-- List all posted jobs -->
+                {% for job in jobs %}
+                    <div class="job">
+                        <h3>{{ job.title }}</h3>
+                        <p>{{ job.description }}</p>
+                        <!-- Delete button to remove the posted job -->
+                        <form action="{% url 'delete_job' job.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
