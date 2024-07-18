@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        h2,p{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Portal</h1>
+    </header>
+    <nav>
+        <a href="{% url 'candidate_dashboard' %}">Candidate Dashboard</a>
+        <a href="{% url 'hr_dashboard' %}">HR Dashboard</a>
+        <a href="{% url 'admin:login' %}">Admin Login</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Welcome to the Job Portal !!</h2>
+            <p>Choose your dashboard from the navigation menu.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
