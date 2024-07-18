@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Background color */
+}
+
+header {
+    background-color: #898121; /* Header background color */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #E5C287; /* Navbar background color */
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #E8751A; /* Footer background color */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.job-listing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.job-listing .job {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff; /* Job listing background color */
+    border-radius: 5px;
+}
+
+.job-listing .job:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+button {
+    background-color: #E8751A; /* Button background color */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #E5C287; /* Button background color on hover */
+}
